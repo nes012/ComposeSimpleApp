@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import anzhy.dizi.composesimpleapp.ui.theme.ComposeSimpleAppTheme
+import anzhy.dizi.composesimpleapp.view.Rover
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,13 +23,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-
+                    Rover(
+                        name = "Perseverance",
+                        image = R.drawable.perseverance,
+                        landingDate = "18 February 2021",
+                        distance = "12.56 km"
+                    )
                 }
             }
         }
     }
 }
-
 
 
 @Preview(showBackground = true)
