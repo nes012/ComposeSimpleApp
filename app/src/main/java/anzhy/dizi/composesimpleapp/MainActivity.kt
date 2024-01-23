@@ -12,25 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import anzhy.dizi.composesimpleapp.ui.theme.ComposeSimpleAppTheme
 import anzhy.dizi.composesimpleapp.view.Rover
+import anzhy.dizi.composesimpleapp.view.RoverList
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeSimpleAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Rover(
-                        name = "Perseverance",
-                        image = R.drawable.perseverance,
-                        landingDate = "18 February 2021",
-                        distance = "12.56 km"
-                    )
-                }
-            }
+            NavCompose()
         }
     }
 }
