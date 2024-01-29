@@ -6,6 +6,7 @@ import anzhy.dizi.composesimpleapp.nav.Destinations.Home
 object Destinations {
     const val Home = "home"
     const val Manifest = "manifest/{roverName}"
+    const val Photo = "photo/{roverName}?sol"
 }
 
 class Action(navController: NavController) {
@@ -13,5 +14,8 @@ class Action(navController: NavController) {
     val manifest: (roverName: String) -> Unit = { roverName ->
         navController.navigate("manifest/${roverName}")
     }
-
+    val photo: (roverName: String, sol: String) -> Unit =
+        { roverName, sol ->
+            navController.navigate("photo/$roverName?.sol=${sol}")
+        }
 }

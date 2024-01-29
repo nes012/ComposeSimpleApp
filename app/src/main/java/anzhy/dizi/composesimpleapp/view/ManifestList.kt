@@ -20,7 +20,9 @@ import anzhy.dizi.composesimpleapp.network.service.model.RoverManifestUiModel
 
 @Composable
 fun ManifestList(
-    roverManifestUiModelList: List<RoverManifestUiModel>
+    roverManifestUiModelList: List<RoverManifestUiModel>,
+    roverName: String,
+    onClick: (roverName: String, sol: String) -> Unit
 ) {
     Surface(
         color = MaterialTheme.colorScheme.background,
@@ -28,7 +30,11 @@ fun ManifestList(
     ) {
         LazyColumn() {
             items(count = roverManifestUiModelList.size, itemContent = { index ->
-                Manifest(roverManifestUiModel = roverManifestUiModelList[index])
+                Manifest(
+                    roverManifestUiModel = roverManifestUiModelList[index],
+                    roverName = roverName,
+                    onClick = onClick
+                )
             })
         }
     }
@@ -36,13 +42,15 @@ fun ManifestList(
 
 @Composable
 fun Manifest(
-    roverManifestUiModel: RoverManifestUiModel
+    roverManifestUiModel: RoverManifestUiModel,
+    roverName: String,
+    onClick: (roverName: String, sol: String) -> Unit
 ) {
     Card(
         modifier = Modifier
             .padding(16.dp)
             .fillMaxWidth()
-            .clickable { }
+            .clickable { onClick(roverName, roverManifestUiModel.sol) }
     ) {
         Column(
             modifier = Modifier.padding(16.dp)
@@ -68,6 +76,8 @@ fun ManifestPreview() {
             sol = "4",
             earthDate = "2021-03-05",
             photoNumber = "34"
-        )
+        ),
+        roverName = "",
+        onClick = {_, _ ->}
     )
 }

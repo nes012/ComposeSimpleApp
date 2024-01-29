@@ -9,8 +9,10 @@ import androidx.navigation.compose.rememberNavController
 import anzhy.dizi.composesimpleapp.nav.Action
 import anzhy.dizi.composesimpleapp.nav.Destinations.Home
 import anzhy.dizi.composesimpleapp.nav.Destinations.Manifest
+import anzhy.dizi.composesimpleapp.nav.Destinations.Photo
 import anzhy.dizi.composesimpleapp.ui.theme.ComposeSimpleAppTheme
 import anzhy.dizi.composesimpleapp.view.ManifestScreen
+import anzhy.dizi.composesimpleapp.view.PhotoScreen
 import anzhy.dizi.composesimpleapp.view.RoverList
 
 @Composable
@@ -25,14 +27,24 @@ fun NavCompose() {
         ) {
             // to create destinations we should user composable
             composable(Home) {
-                RoverList() { roverName ->
+                RoverList { roverName ->
                     actions.manifest(roverName)
                 }
             }
             composable(Manifest) { backStackEntry ->
                 ManifestScreen(
                     backStackEntry.arguments?.getString("roverName"),
-                    marsRoverManifestViewModel = hiltViewModel()
+                    marsRoverManifestViewModel = hiltViewModel(),
+                    onClick = { roverName, sol ->
+                        actions.photo(roverName, sol)
+                    }
+                )
+            }
+            composable(Photo) { backStackEntry ->
+                PhotoScreen(
+                    roverName = backStackEntry.arguments?.getString("roverName"),
+                    sol = backStackEntry.arguments?.getString("sol"),
+                    marsRoverPhotoViewModel = hiltViewModel()
                 )
             }
         }

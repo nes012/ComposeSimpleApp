@@ -11,7 +11,8 @@ import anzhy.dizi.composesimpleapp.ui.manifestlist.MarsRoverManifestViewModel
 @Composable
 fun ManifestScreen(
     roverName: String?,
-    marsRoverManifestViewModel: MarsRoverManifestViewModel
+    marsRoverManifestViewModel: MarsRoverManifestViewModel,
+    onClick: (roverName: String, sol: String) -> Unit
 ) {
     val viewState by marsRoverManifestViewModel.roverManifestUiState.collectAsStateWithLifecycle()
 
@@ -19,13 +20,15 @@ fun ManifestScreen(
         LaunchedEffect(Unit) {
             marsRoverManifestViewModel.getMarsRoverManifest(roverName)
         }
-    }
-    when(val roverManifestUiState = viewState) {
-        RoverManifestUiState.Error -> Error()
-        RoverManifestUiState.Loading -> Loading()
-        is RoverManifestUiState.Success -> ManifestList(
-            roverManifestUiModelList = roverManifestUiState.roverManifestUiModelList
-        )
+        when (val roverManifestUiState = viewState) {
+            RoverManifestUiState.Error -> Error()
+            RoverManifestUiState.Loading -> Loading()
+            is RoverManifestUiState.Success -> ManifestList(
+                roverManifestUiModelList = roverManifestUiState.roverManifestUiModelList,
+                roverName = roverName,
+                onClick = onClick
+            )
+        }
     }
 }
 

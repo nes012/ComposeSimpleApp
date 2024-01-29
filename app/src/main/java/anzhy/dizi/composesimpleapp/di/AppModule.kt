@@ -1,5 +1,6 @@
 package anzhy.dizi.composesimpleapp.di
 
+import anzhy.dizi.composesimpleapp.network.service.MarsRoverPhotoService
 import anzhy.dizi.composesimpleapp.network.service.MarsRoverService
 import dagger.Module
 import dagger.Provides
@@ -14,4 +15,7 @@ object AppModule {
     fun provideMarsRoverManifestService(): MarsRoverService =
         MarsRoverService.create()
 
+    @Provides
+    fun provideMarsRoverPhotoService(): MarsRoverPhotoService =
+        MarsRoverPhotoService.create()
 }
