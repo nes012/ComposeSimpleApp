@@ -2,6 +2,7 @@ package anzhy.dizi.composesimpleapp.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Surface
@@ -15,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import anzhy.dizi.composesimpleapp.R
 import anzhy.dizi.composesimpleapp.network.service.model.RoverPhotoUiModel
+import coil.compose.AsyncImage
 
 @Composable
 fun PhotoList(
@@ -49,12 +51,13 @@ fun Photo(
                 text = roverPhotoUiModel.roverName,
                 modifier = Modifier.padding(16.dp)
             )
-            Text(
-                text = stringResource(
-                    id = R.string.sol,
-                    roverPhotoUiModel.sol
-                )
+
+            AsyncImage(
+                model = roverPhotoUiModel.imgSrc, contentDescription = "rover photo",
+                Modifier.height(300.dp)
             )
+
+            Text(text = stringResource(id = R.string.sol, roverPhotoUiModel.sol))
             Text(text = stringResource(id = R.string.earth_date, roverPhotoUiModel.earthDate))
             Text(text = roverPhotoUiModel.cameraFullName)
         }
