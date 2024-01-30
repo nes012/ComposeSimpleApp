@@ -1,6 +1,5 @@
 package anzhy.dizi.composesimpleapp.network.data
 
-import anzhy.dizi.composesimpleapp.model.roverUIModelList
 import anzhy.dizi.composesimpleapp.network.service.MarsRoverPhotoService
 import anzhy.dizi.composesimpleapp.network.service.model.RoverPhotoUiModel
 import anzhy.dizi.composesimpleapp.network.service.model.RoverPhotoUiState
@@ -12,7 +11,7 @@ class MarsPhotoRepo @Inject constructor(
     private val marsRoverPhotoService: MarsRoverPhotoService
 ) {
 
-    fun getMarsRoverPhoto(roverName: String, sol: String): Flow<RoverPhotoUiState> = flow {
+    suspend fun getMarsRoverPhoto(roverName: String, sol: String): Flow<RoverPhotoUiState> = flow {
         try {
             val networkResult = marsRoverPhotoService.getMarsRoverPhotos(
                 roverName = roverName,
@@ -23,9 +22,9 @@ class MarsPhotoRepo @Inject constructor(
                     roverPhotoUiModelList = networkResult.photos.map { photo ->
                         RoverPhotoUiModel(
                             id = photo.id,
-                            roverName = roverName,
+                            roverName = photo.rover.name,
                             imgSrc = photo.imgSrc,
-                            sol = sol,
+                            sol = photo.sol.toString(),
                             earthDate = photo.earthDate,
                             cameraFullName = photo.camera.fullName
                         )

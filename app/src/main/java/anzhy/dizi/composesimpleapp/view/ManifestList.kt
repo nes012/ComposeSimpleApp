@@ -28,7 +28,7 @@ fun ManifestList(
         color = MaterialTheme.colorScheme.background,
         modifier = Modifier.fillMaxSize()
     ) {
-        LazyColumn() {
+        LazyColumn {
             items(count = roverManifestUiModelList.size, itemContent = { index ->
                 Manifest(
                     roverManifestUiModel = roverManifestUiModelList[index],

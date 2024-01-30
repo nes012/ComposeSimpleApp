@@ -27,6 +27,7 @@ interface MarsRoverPhotoService {
                 if (BuildConfig.DEBUG) {
                     HttpLoggingInterceptor.Level.BASIC
                 } else HttpLoggingInterceptor.Level.NONE
+
             val client = OkHttpClient.Builder()
                 .addInterceptor(logger)
                 .build()
