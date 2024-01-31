@@ -40,8 +40,9 @@ android {
         compose true
         buildConfig true
     }
+
     composeOptions {
-        kotlinCompilerExtensionVersion '1.5.6'
+        kotlinCompilerExtensionVersion = "1.5.8"
     }
     packagingOptions {
         resources {
@@ -63,7 +64,6 @@ dependencies {
     // UI
     implementation "androidx.compose.ui:ui:$compose_ui_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
-    implementation 'androidx.compose.material:material:1.5.4'
     implementation 'androidx.compose.material3:material3:1.1.2'
 
     // support styles
@@ -72,6 +72,9 @@ dependencies {
     // navigation
     implementation 'androidx.navigation:navigation-runtime-ktx:2.7.6'
     implementation "androidx.navigation:navigation-compose:2.7.6"
+
+    // bottom navigation
+    implementation "androidx.compose.material:material:1.6.0"
 
     // Dagger - Hilt
     implementation "com.google.dagger:hilt-android:2.48"

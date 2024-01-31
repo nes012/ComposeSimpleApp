@@ -20,7 +20,7 @@ fun Loading() {
             .fillMaxHeight(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        CircularProgressIndicator()
+        //CircularProgressIndicator()
         Text(text = stringResource(id = R.string.loading))
     }
 }

@@ -20,11 +20,12 @@ import coil.compose.AsyncImage
 
 @Composable
 fun PhotoList(
+    modifier: Modifier,
     roverPhotoUiModelList: List<RoverPhotoUiModel>
 ) {
     Surface(
         color = MaterialTheme.colorScheme.background,
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
         LazyColumn {
             items(count = roverPhotoUiModelList.size, itemContent = { index ->

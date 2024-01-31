@@ -20,13 +20,14 @@ import anzhy.dizi.composesimpleapp.network.service.model.RoverManifestUiModel
 
 @Composable
 fun ManifestList(
+    modifier: Modifier,
     roverManifestUiModelList: List<RoverManifestUiModel>,
     roverName: String,
     onClick: (roverName: String, sol: String) -> Unit
 ) {
     Surface(
         color = MaterialTheme.colorScheme.background,
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
         LazyColumn {
             items(count = roverManifestUiModelList.size, itemContent = { index ->
